@@ -334,8 +334,7 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $animate, 
         .on('$md.drag', onDrag)
         .on('$md.dragend', onDragEnd);
 
-      var style = getComputedStyle(element[0]);
-      var sidenavWidth = parseInt(style.width);
+      var sidenavWidth;
       var isRightSidenav = element.hasClass('md-sidenav-right');
       var accelerationBound = 6;
 
@@ -346,6 +345,7 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $animate, 
       var isQuickDrag = false;
 
       function onDragStart() {
+        sidenavWidth = parseInt(getComputedStyle(element[0]).width);
         if (element.hasClass('md-locked-open')) {
           dragCancelled = true;
         } else {
